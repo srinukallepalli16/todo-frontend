@@ -791,3 +791,39 @@ input:focus, textarea:focus, select:focus {
 [data-theme="dark"] .dropdown-divider {
   background-color: #333;
 }
+
+
+/* =========================================
+   Dark Mode Text & Background Fixes
+========================================= */
+/* Fix the white bar at the very top and main backgrounds */
+[data-theme="dark"] .app-shell,
+[data-theme="dark"] .workspace-layout,
+[data-theme="dark"] .top-nav {
+  background-color: #121212 !important;
+}
+
+/* Force all text elements to be light in dark mode */
+[data-theme="dark"] .brand-name,
+[data-theme="dark"] .email-label,
+[data-theme="dark"] label,
+[data-theme="dark"] .task-name,
+[data-theme="dark"] .task-notes,
+[data-theme="dark"] .task-deadline,
+[data-theme="dark"] .stat-title,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] p,
+[data-theme="dark"] .filter-card {
+  color: #f0f0f0 !important;
+}
+
+/* Fix task list checkmark text (Completed/Pending labels) */
+[data-theme="dark"] .task-row.task-done .task-name {
+  color: #888 !important; /* Dim completed tasks slightly */
+}
+
+/* Ensure empty state text is visible */
+[data-theme="dark"] .empty-panel {
+  color: #f0f0f0 !important;
+}
