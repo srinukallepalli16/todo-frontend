@@ -827,3 +827,35 @@ input:focus, textarea:focus, select:focus {
 [data-theme="dark"] .empty-panel {
   color: #f0f0f0 !important;
 }
+
+
+/* =========================================
+   Dark Mode Borders & Depth Polish
+========================================= */
+/* 1. Add a subtle line under the header to separate it from the body */
+[data-theme="dark"] .top-nav {
+  border-bottom: 1px solid #2a2a2a !important;
+}
+
+/* 2. Give cards crisp borders and a soft shadow so they pop */
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .panel-card,
+[data-theme="dark"] .task-row,
+[data-theme="dark"] .profile-dropdown {
+  background-color: #1a1a1a !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 3. Make input fields look slightly recessed */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background-color: #121212 !important;
+  border: 1px solid #444 !important;
+}
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+  border-color: #0d6efd !important; /* Keep the blue focus ring */
+}
