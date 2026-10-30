@@ -624,42 +624,76 @@ input:focus, textarea:focus, select:focus {
   margin-bottom: 8px;
 }
 
+
+/* Mobile Responsiveness for TaskFlow */
 @media screen and (max-width: 768px) {
-  /* 1. Stack the top header so the email doesn't overlap the title */
-  header, .header-container, .navbar {
-    display: flex !important;
+  /* 1. Fix the Header and Email Overlap */
+  .nav-container {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 12px;
+    gap: 15px !important;
+    height: auto !important;
     padding: 15px !important;
   }
-
-  /* Prevent long emails from breaking the screen width */
-  .user-email, header span {
-    word-break: break-all;
-    font-size: 14px;
-  }
-
-  /* 2. Change the 4 summary cards into a 2x2 grid */
-  .summary-cards-container, .stats-row {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px;
+  .user-profile {
     width: 100%;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+  }
+  .email-label {
+    word-break: break-all !important; /* Prevents long emails from breaking layout */
+    white-space: normal !important;
+    font-size: 14px !important;
   }
 
-  /* 3. Stack task list items so buttons move below the text */
-  .task-item, .task-card, li {
-    display: flex !important;
+  /* 2. Turn 4 Stats Cards into a 2x2 Grid */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* 3. Stack Form Inputs */
+  .form-row {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  /* 4. Fix Filter Buttons */
+  .filter-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 15px !important;
+  }
+  .quick-buttons {
+    display: flex;
+    flex-wrap: wrap !important;
+  }
+  .filter-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  /* 5. Fix Task List and Action Buttons */
+  .task-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 15px !important;
+  }
+  .task-main {
+    align-items: flex-start !important;
+  }
+  .task-title-bar {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 15px;
+    gap: 8px !important;
   }
-
-  /* Group buttons to span the full width below the task */
-  .task-actions, .button-group {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  .task-buttons {
+    width: 100% !important;
+    justify-content: space-between !important;
+    display: flex !important;
+    gap: 10px !important;
+  }
+  .btn-edit, .btn-delete {
+    flex: 1 !important; /* Makes Edit and Delete buttons equal width */
   }
 }
