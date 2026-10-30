@@ -625,27 +625,41 @@ input:focus, textarea:focus, select:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* Forces flexbox containers (like your summary cards) to stack vertically */
-  div {
-    box-sizing: border-box;
-  }
-  
-  .summary-cards-container, .task-list { /* Update class names to match your actual code */
-    display: flex;
+  /* 1. Stack the top header so the email doesn't overlap the title */
+  header, .header-container, .navbar {
+    display: flex !important;
     flex-direction: column !important;
-    gap: 15px;
+    align-items: flex-start !important;
+    gap: 12px;
+    padding: 15px !important;
+  }
+
+  /* Prevent long emails from breaking the screen width */
+  .user-email, header span {
+    word-break: break-all;
+    font-size: 14px;
+  }
+
+  /* 2. Change the 4 summary cards into a 2x2 grid */
+  .summary-cards-container, .stats-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px;
     width: 100%;
   }
 
-  /* Ensures inputs and text areas don't overflow the screen */
-  input, textarea, button {
-    width: 100% !important;
-    max-width: 100%;
+  /* 3. Stack task list items so buttons move below the text */
+  .task-item, .task-card, li {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 15px;
   }
 
-  /* Adds padding to the edges so content doesn't touch the screen border */
-  body, .main-container {
-    padding: 10px;
-    overflow-x: hidden;
+  /* Group buttons to span the full width below the task */
+  .task-actions, .button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 }
