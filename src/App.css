@@ -623,3 +623,29 @@ input:focus, textarea:focus, select:focus {
   font-size: 2.2rem;
   margin-bottom: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  /* Forces flexbox containers (like your summary cards) to stack vertically */
+  div {
+    box-sizing: border-box;
+  }
+  
+  .summary-cards-container, .task-list { /* Update class names to match your actual code */
+    display: flex;
+    flex-direction: column !important;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Ensures inputs and text areas don't overflow the screen */
+  input, textarea, button {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  /* Adds padding to the edges so content doesn't touch the screen border */
+  body, .main-container {
+    padding: 10px;
+    overflow-x: hidden;
+  }
+}
