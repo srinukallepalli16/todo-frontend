@@ -12,6 +12,18 @@ export default function Dashboard({ user, onLogout }) {
   const [dueDate, setDueDate] = useState(new Date().toISOString().split('T')[0]);
 
   // Edit modal state
+
+  // --- NEW: Profile Dropdown & Theme State ---
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+  // -------------------------------------------
+
+
   const [editingTask, setEditingTask] = useState(null);
   const [editTitle, setEditTitle] = useState('');
   const [editDescription, setEditDescription] = useState('');
@@ -141,11 +153,48 @@ export default function Dashboard({ user, onLogout }) {
             <span className="brand-icon">✓</span>
             <span className="brand-name">TaskFlow Workspace</span>
           </div>
-          <div className="user-profile">
+          {/* <div className="user-profile">
             <div className="avatar">{user?.email?.charAt(0).toUpperCase()}</div>
             <span className="email-label">{user?.email}</span>
             <button onClick={onLogout} className="btn-logout">Log out</button>
+          </div> */}
+          {/* --- NEW: Clickable Profile Dropdown --- */}
+          <div className="user-profile-container" style={{ position: 'relative' }}>
+            <div 
+              className="user-profile" 
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
+            >
+              <div className="avatar">{user?.email?.charAt(0).toUpperCase()}</div>
+              <span className="email-label">{user?.email}</span>
+              <span style={{ fontSize: '10px' }}>▼</span>
+            </div>
+
+            {isProfileOpen && (
+              <div className="profile-dropdown">
+                <div className="dropdown-info">
+                  <small>Signed in as</small>
+                  <br />
+                  <strong>{user?.email}</strong>
+                </div>
+                <div className="dropdown-divider"></div>
+                <button 
+                  className="dropdown-item" 
+                  onClick={() => {
+                    setTheme(theme === 'light' ? 'dark' : 'light');
+                    setIsProfileOpen(false); // close menu after clicking
+                  }}
+                >
+                  {theme === 'light' ? '🌙 Switch to Dark Mode' : '☀️ Switch to Light Mode'}
+                </button>
+                <div className="dropdown-divider"></div>
+                <button className="dropdown-item text-danger" onClick={onLogout}>
+                  🚪 Log out
+                </button>
+              </div>
+            )}
           </div>
+          {/* --------------------------------------- */}
         </div>
       </header>
 
